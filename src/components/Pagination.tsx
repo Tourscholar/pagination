@@ -8,7 +8,8 @@ import { Pagers } from './Pargers';
 export const Pagination = (props: Props) => {
   /**
    * @param total: 总页数
-   * @param defaultCurrent: 默认当前页面
+   * @param defaultCurrent: 默认初始页
+   * @param current: 当前页面
    */
 
   const { totalPages, defaultCurrent } = props;
