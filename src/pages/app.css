@@ -1,0 +1,147 @@
+.app {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.app-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.app-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.app-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.m-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 禁止选中空白区域 */
+  -moz-user-select: none; /*火狐*/
+  -webkit-user-select: none; /*webkit浏览器*/
+  -ms-user-select: none; /*IE10*/
+  -khtml-user-select: none; /*早期浏览器*/
+  user-select: none;
+}
+
+.m-pagination .btn-prev,
+.btn-next {
+  display: inline-block;
+  width: 30px;
+  height: 28px;
+
+  margin: 0 5px;
+  padding: 0 4px;
+
+  line-height: 28px;
+  font-size: 13px;
+
+  box-sizing: border-box;
+  vertical-align: top;
+  text-align: center;
+
+  background-color: #f4f4f5;
+  color: #606266;
+  border-radius: 2px;
+
+  border: none;
+  cursor: pointer;
+}
+
+.m-pager {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.m-pager li {
+  display: inline-block;
+  width: 30px;
+  height: 28px;
+
+  margin: 0 5px;
+  padding: 0 4px;
+
+  line-height: 28px;
+  font-size: 13px;
+
+  box-sizing: border-box;
+  vertical-align: top;
+  text-align: center;
+
+  background-color: #f4f4f5;
+  color: #606266;
+  border-radius: 2px;
+
+  cursor: pointer;
+}
+
+.m-pager li {
+  display: inline-block;
+  width: 30px;
+  height: 28px;
+
+  margin: 0 5px;
+  padding: 0 4px;
+
+  line-height: 28px;
+  font-size: 13px;
+
+  box-sizing: border-box;
+  vertical-align: top;
+  text-align: center;
+
+  background-color: #f4f4f5;
+  color: #606266;
+  border-radius: 2px;
+
+  cursor: pointer;
+}
+
+.m-pager li.active {
+  background-color: #3c8cff;
+  color: #fff;
+  cursor: default;
+}
+
+.m-pager li:not(.active):hover {
+  color: #3c8cff;
+}
+
+.m-pager li.more::before {
+  content: '...';
+}
+
+.m-pager li.more.left:hover::before {
+  content: '<<';
+}
+
+.m-pager li.more.right:hover::before {
+  content: '>>';
+}
