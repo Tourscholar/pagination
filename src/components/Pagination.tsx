@@ -1,11 +1,15 @@
 import { lists } from '@/utils/db';
-import { Props } from '@/utils/Props';
 import { useEffect, useState } from 'react';
 import { Button } from './Button';
 import { List } from './List';
 import { Pagers } from './Pargers';
 
-export const Pagination = (props: Props) => {
+interface paginationProps {
+  totalPages: number;
+  defaultCurrent: number;
+}
+
+export const Pagination = (props: paginationProps) => {
   /**
    * @param total: 总页数
    * @param defaultCurrent: 默认初始页
@@ -23,7 +27,7 @@ export const Pagination = (props: Props) => {
 
   return (
     <>
-      <List dataSource={dataSource}/>
+      <List dataSource={dataSource} />
       <div className="m-pagination">
         <Button
           className="btn-prev"

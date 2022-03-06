@@ -1,6 +1,6 @@
 import { generatePages } from '../utils/index';
 
-interface Props {
+interface pagersProps {
   totalPages: number;
   thisCurrent: number;
   onSetPage: (len: number) => void;
@@ -12,7 +12,7 @@ interface Props {
  * 4. 当页码小于倒数第4页时, 显示右边更多按钮
  */
 
-export const Pagers = (props: Props) => {
+export const Pagers = (props: pagersProps) => {
   /**
    * @param totalPage: 总页数
    * @param thisCurrent: 当前页码
@@ -59,71 +59,67 @@ export const Pagers = (props: Props) => {
   })();
 
   return (
-    <>
-      <ul className="m-pager">
-        <li
-          className={'number' + (thisCurrent == 1 ? ' active' : '')}
-          onClick={() => {
-            onSetPage(1);
-          }}
-        >
-          1
-        </li>
+    <ul className="m-pager">
+      <li
+        className={'number' + (thisCurrent == 1 ? ' active' : '')}
+        onClick={() => {
+          onSetPage(1);
+        }}
+      >
+        1
+      </li>
 
-        {thisCurrent >= centerSize && pages.length >= startEllipsisSize && (
+      {thisCurrent >= centerSize && pages.length >= startEllipsisSize && (
+        <li
+          className="more left"
+          onClick={() => {
+            let newPage = thisCurrent - jumpSize;
+            if (newPage < 1) {
+              newPage = 1;
+            }
+            onSetPage(newPage);
+          }}
+        ></li>
+      )}
+
+      {centerPages.map((page, key) => {
+        return (
           <li
-            className="more left"
+            key={key}
+            className={'number' + (page == thisCurrent ? ' active' : '')}
             onClick={() => {
-              let newPage = thisCurrent - jumpSize;
-              if (newPage < 1) {
-                newPage = 1;
+              onSetPage(page);
+            }}
+          >
+            {page}
+          </li>
+        );
+      })}
+
+      {thisCurrent <= pages.length - centerSize + 1 &&
+        pages.length >= startEllipsisSize && (
+          <li
+            className="more right"
+            onClick={() => {
+              let newPage = thisCurrent + jumpSize;
+              if (newPage > pages.length) {
+                newPage = pages.length;
               }
               onSetPage(newPage);
             }}
           ></li>
         )}
 
-        {centerPages.map((page, key) => {
-          return (
-            <li
-              key={key}
-              className={'number' + (page == thisCurrent ? ' active' : '')}
-              onClick={() => {
-                onSetPage(page);
-              }}
-            >
-              {page}
-            </li>
-          );
-        })}
-
-        {thisCurrent <= pages.length - centerSize + 1 &&
-          pages.length >= startEllipsisSize && (
-            <li
-              className="more right"
-              onClick={() => {
-                let newPage = thisCurrent + jumpSize;
-                if (newPage > pages.length) {
-                  newPage = pages.length;
-                }
-                onSetPage(newPage);
-              }}
-            ></li>
-          )}
-
-        {pages.length !== 1 && (
-          <li
-            className={
-              'number' + (pages.length == thisCurrent ? ' active' : '')
-            }
-            onClick={() => {
-              onSetPage(pages.length);
-            }}
-          >
-            {pages.length}
-          </li>
-        )}
-      </ul>
-    </>
+      {pages.length !== 1 && (
+        <li
+          className={'number' + (pages.length == thisCurrent ? ' active' : '')}
+          onClick={() => {
+            onSetPage(pages.length);
+          }}
+        >
+          {pages.length}
+        </li>
+      )}
+    </ul>
   );
 };
